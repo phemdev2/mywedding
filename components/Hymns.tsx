@@ -1,48 +1,71 @@
 import React from 'react';
-import { HYMNS } from '@/constants';
+import { Great_Vibes, Cinzel } from 'next/font/google';
+import { WEDDING_SONGS } from '@/constants';
 
-// 1. Define the shape of a single Hymn for better type safety
-interface Hymn {
-  id: string | number;
-  title: string;
-  verses: string[]; // This tells TS that each 'verse' is a string
-}
+const scriptFont = Great_Vibes({ subsets: ['latin'], weight: '400' });
+const headerFont = Cinzel({ subsets: ['latin'], weight: ['400', '700'] });
 
-const Hymns: React.FC = () => {
+const WeddingMassSongs: React.FC = () => {
   return (
     <section id="hymns" className="py-24 bg-white">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 serif">Wedding Hymns</h2>
-          <div className="w-20 h-0.5 bg-wedding-gold mx-auto"></div>
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div className="text-center mb-20">
+          <h2 className={`${headerFont.className} text-4xl md:text-5xl font-bold mb-4 uppercase tracking-[0.2em]`}>
+            Wedding Mass Songs
+          </h2>
+          <p className="text-wedding-gold italic font-serif">Celebrating the Union of Vicky & Ope</p>
+          <div className="w-24 h-1 bg-wedding-gold mx-auto mt-6"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Casting HYMNS as Hymn[] if the constant isn't already typed */}
-          {(HYMNS as Hymn[]).map((hymn) => (
-            <div key={hymn.id} className="bg-wedding-cream p-10 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-              <h3 className="text-2xl font-bold mb-8 text-center text-wedding-gold serif italic">
-                {hymn.title}
+        <div className="grid md:grid-cols-2 gap-12 items-start">
+          {WEDDING_SONGS.map((song) => (
+            <div 
+              key={song.id} 
+              className="bg-wedding-cream/30 p-8 md:p-10 rounded-3xl border border-wedding-gold/10 hover:border-wedding-gold/30 transition-all shadow-sm"
+            >
+              {/* Category Tag */}
+              <span className={`${headerFont.className} block text-center text-[11px] tracking-[0.3em] text-wedding-gold mb-4 uppercase`}>
+                {song.category}
+              </span>
+              
+              <h3 className={`${scriptFont.className} text-4xl mb-8 text-center text-gray-800`}>
+                {song.title}
               </h3>
+              
               <div className="space-y-8">
-                {/* 2. Explicitly type 'verse' as string to satisfy the compiler */}
-                {hymn.verses.map((verse: string, vIndex: number) => (
+                {song.verses.map((verse, vIndex) => (
                   <div key={vIndex} className="text-center">
-                    <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-2">
-                      Verse {vIndex + 1}
-                    </span>
-                    <p className="whitespace-pre-line text-gray-700 leading-relaxed italic">
+                    <p className="whitespace-pre-line text-gray-600 leading-relaxed font-serif italic text-base md:text-lg">
                       {verse}
                     </p>
                   </div>
                 ))}
               </div>
+              
+              <div className="mt-10 flex justify-center opacity-20">
+                 <div className="w-10 h-px bg-wedding-gold"></div>
+                 <div className="mx-3 text-wedding-gold text-xs">❦</div>
+                 <div className="w-10 h-px bg-wedding-gold"></div>
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* Prayer of the Faithful Special Box */}
+        <div className="mt-16 bg-wedding-green/5 p-8 rounded-3xl border border-wedding-green/10 text-center max-w-2xl mx-auto">
+          <span className={`${headerFont.className} block text-[11px] tracking-[0.3em] text-wedding-green mb-4 uppercase`}>
+            Prayer of the Faithful
+          </span>
+          <p className="font-serif italic text-gray-700 leading-loose">
+            "That they may love one another we pray oh lord... <br/>
+            That they may live in peace and harmony... <br/>
+            That they may see their children’s children."
+          </p>
+          <p className={`${scriptFont.className} text-2xl mt-4 text-wedding-gold`}>Vicky & Ope</p>
         </div>
       </div>
     </section>
   );
 };
 
-export default Hymns;
+export default WeddingMassSongs;

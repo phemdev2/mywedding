@@ -1,5 +1,7 @@
 import React from 'react';
-// Next.js uses standard ES imports, make sure these paths match your folder structure
+import { Great_Vibes, Cinzel } from 'next/font/google';
+
+// Components
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Schedule from '@/components/Schedule';
@@ -9,9 +11,13 @@ import Gallery from '@/components/Gallery';
 import AIBlessing from '@/components/AIBlessing';
 import { WEDDING_DATE } from '@/constants';
 
+// Configure Fonts locally for the wrapper sections (Quote/Footer)
+const scriptFont = Great_Vibes({ subsets: ['latin'], weight: '400' });
+const headerFont = Cinzel({ subsets: ['latin'], weight: ['400', '700'] });
+
 export default function WeddingPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white selection:bg-wedding-gold/30">
       <Header />
       
       <main>
@@ -19,36 +25,60 @@ export default function WeddingPage() {
         
         <Schedule />
         
-        {/* Quote Section */}
-        <section className="bg-wedding-cream py-16">
+        {/* Quote Section - Styled to match the theme */}
+        <section className="bg-[#FDFBF7] py-20 border-y border-wedding-gold/10">
           <div className="container mx-auto px-6 text-center">
-            <h2 className="text-3xl md:text-5xl font-light serif italic max-w-4xl mx-auto leading-tight">
-              "Two souls with but a single thought, two hearts that beat as one."
+            <div className="text-wedding-gold text-4xl mb-4 opacity-40">❝</div>
+            <h2 className={`${scriptFont.className} text-4xl md:text-6xl text-wedding-green max-w-4xl mx-auto leading-tight drop-shadow-sm`}>
+              "Two souls with but a single thought, <br className="hidden md:block" />
+              two hearts that beat as one."
             </h2>
+            <div className="mt-6 text-xs uppercase tracking-[0.3em] text-gray-400 font-bold">
+              — John Keats
+            </div>
           </div>
         </section>
 
         <Hymns />
+        
         <BibleReading />
+        
         <Gallery />
-        {/* <AIBlessing />  */}
+        
+        {/* Placed the Interactive Blessing before the footer */}
+        <AIBlessing /> 
       </main>
 
-      <footer className="bg-white py-16 border-t border-gray-100">
+      <footer className="bg-white py-20 border-t border-gray-100">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4 text-wedding-gold serif">V&O</h2>
-          <p className="text-sm uppercase tracking-[0.2em] text-gray-400 mb-8">{WEDDING_DATE}</p>
+          
+          {/* Footer Logo - Matches Header */}
+          <h2 className={`${headerFont.className} text-5xl font-bold mb-6 text-wedding-green`}>
+            V<span className="text-wedding-gold font-light mx-1">|</span>O
+          </h2>
+          
+          <p className="text-xs uppercase tracking-[0.3em] text-gray-400 mb-10">
+            {WEDDING_DATE} • Lagos, Nigeria
+          </p>
+          
           <div className="max-w-md mx-auto mb-12">
-            <p className="text-gray-600 italic">
-              Thank you for being part of our special day. Your presence and prayers mean the world to us.
+            <p className={`${scriptFont.className} text-3xl text-gray-600`}>
+              Thank you for celebrating with us.
+            </p>
+            <p className="text-sm text-gray-400 mt-2 font-serif italic">
+              Your presence and prayers mean the world to us.
             </p>
           </div>
-          <div className="flex justify-center space-x-6">
-            <span className="w-10 h-0.5 bg-wedding-gold/30 self-center"></span>
-            <span className="text-xs tracking-widest uppercase font-medium">With Love</span>
-            <span className="w-10 h-0.5 bg-wedding-gold/30 self-center"></span>
+          
+          <div className="flex justify-center items-center space-x-6 opacity-60">
+            <span className="w-12 h-[1px] bg-wedding-gold"></span>
+            <span className="text-[10px] tracking-widest uppercase font-bold text-wedding-green">
+              With Love
+            </span>
+            <span className="w-12 h-[1px] bg-wedding-gold"></span>
           </div>
-          <p className="mt-12 text-[10px] text-gray-300 uppercase tracking-widest">
+          
+          <p className="mt-16 text-[10px] text-gray-300 uppercase tracking-widest">
             &copy; {new Date().getFullYear()} Victoria & Opeoluwa. Forever & Always.
           </p>
         </div>
