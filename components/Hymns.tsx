@@ -1,6 +1,12 @@
-
 import React from 'react';
 import { HYMNS } from '@/constants';
+
+// 1. Define the shape of a single Hymn for better type safety
+interface Hymn {
+  id: string | number;
+  title: string;
+  verses: string[]; // This tells TS that each 'verse' is a string
+}
 
 const Hymns: React.FC = () => {
   return (
@@ -12,15 +18,19 @@ const Hymns: React.FC = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {HYMNS.map((hymn) => (
+          {/* Casting HYMNS as Hymn[] if the constant isn't already typed */}
+          {(HYMNS as Hymn[]).map((hymn) => (
             <div key={hymn.id} className="bg-wedding-cream p-10 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
               <h3 className="text-2xl font-bold mb-8 text-center text-wedding-gold serif italic">
                 {hymn.title}
               </h3>
               <div className="space-y-8">
-                {hymn.verses.map((verse, vIndex) => (
+                {/* 2. Explicitly type 'verse' as string to satisfy the compiler */}
+                {hymn.verses.map((verse: string, vIndex: number) => (
                   <div key={vIndex} className="text-center">
-                    <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-2">Verse {vIndex + 1}</span>
+                    <span className="block text-[10px] uppercase tracking-widest text-gray-400 mb-2">
+                      Verse {vIndex + 1}
+                    </span>
                     <p className="whitespace-pre-line text-gray-700 leading-relaxed italic">
                       {verse}
                     </p>
