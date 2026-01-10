@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts mapped from the variables in layout.tsx */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-serif: var(--font-playfair), ui-serif, Georgia;
+  --font-cormorant: var(--font-cormorant), serif;
+
+  /* Colors matched to your logo and theme */
+  --color-wedding-cream: #F9F7F2;
+  --color-wedding-gold: #C5A059;
+  --color-wedding-green: #004D40;
+}
+
+/* Custom utility for the timeline dots in your schedule */
+@utility timeline-dot {
+  position: relative;
+  &::after {
+    content: '';
+    @apply absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-wedding-gold border-4 border-wedding-cream;
+  }
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
