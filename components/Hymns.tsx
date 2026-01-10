@@ -33,14 +33,15 @@ const WeddingMassSongs: React.FC = () => {
               </h3>
               
               <div className="space-y-8">
-                {song.verses.map((verse, vIndex) => (
-                  <div key={vIndex} className="text-center">
-                    <p className="whitespace-pre-line text-gray-600 leading-relaxed font-serif italic text-base md:text-lg">
-                      {verse}
-                    </p>
-                  </div>
-                ))}
-              </div>
+  
+  {song.verses.map((verse: string, vIndex: number) => ( // [!code ++]
+    <div key={vIndex} className="text-center">
+      <p className="whitespace-pre-line text-gray-600 leading-relaxed font-serif italic text-base md:text-lg">
+        {verse}
+      </p>
+    </div>
+  ))}
+</div>
               
               <div className="mt-10 flex justify-center opacity-20">
                  <div className="w-10 h-px bg-wedding-gold"></div>

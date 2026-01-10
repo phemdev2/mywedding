@@ -1,4 +1,6 @@
-import { ProgramItem, SongEntry, Reading, GalleryImage } from '@/types';
+// Change SongEntry to Hymn
+import { ProgramItem, Hymn, Reading, GalleryImage } from '@/types'; // [!code ++]
+
 
 export const WEDDING_DATE = "February 7, 2026";
 export const VENUE_NAME = "Corpus Christi Catholic Church, Egbin, Ijede, Ikorodu, Lagos";
