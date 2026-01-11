@@ -1,21 +1,23 @@
+// types/index.ts or types.ts
 
 export interface ProgramItem {
-  time?: string;
   title: string;
-  subtitle?: string;
-  description?: string;
+  subtitle: string;
+  time?: string;
 }
 
 export interface Hymn {
   id: string;
+  category: string;
   title: string;
+  type: 'song' | 'liturgy';
   verses: string[];
 }
 
 export interface Reading {
   reference: string;
-  text: string;
   reader: string;
+  text: string;
 }
 
 export interface GalleryImage {
