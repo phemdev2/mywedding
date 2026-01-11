@@ -1,6 +1,4 @@
-// Change SongEntry to Hymn
-import { ProgramItem, Hymn, Reading, GalleryImage } from '@/types'; // [!code ++]
-
+import { ProgramItem, Hymn, Reading, GalleryImage } from '@/types';
 
 export const WEDDING_DATE = "February 7, 2026";
 export const VENUE_NAME = "Corpus Christi Catholic Church, Egbin, Ijede, Ikorodu, Lagos";
@@ -38,7 +36,7 @@ export const RECEPTION_PROGRAM: ProgramItem[] = [
   { title: "Party Continues", subtitle: "Dance and celebration" }
 ];
 
-export const WEDDING_SONGS: SongEntry[] = [
+export const WEDDING_SONGS: Hymn[] = [
   {
     id: "hymn-1",
     category: "Entrance Procession",

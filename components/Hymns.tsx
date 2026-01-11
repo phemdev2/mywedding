@@ -33,15 +33,14 @@ const WeddingMassSongs: React.FC = () => {
               </h3>
               
               <div className="space-y-8">
-  
-  {song.verses.map((verse: string, vIndex: number) => ( // [!code ++]
-    <div key={vIndex} className="text-center">
-      <p className="whitespace-pre-line text-gray-600 leading-relaxed font-serif italic text-base md:text-lg">
-        {verse}
-      </p>
-    </div>
-  ))}
-</div>
+                {song.verses.map((verse: string, vIndex: number) => (
+                  <div key={vIndex} className="text-center">
+                    <p className="whitespace-pre-line text-gray-600 leading-relaxed font-serif italic text-base md:text-lg">
+                      {verse}
+                    </p>
+                  </div>
+                ))}
+              </div>
               
               <div className="mt-10 flex justify-center opacity-20">
                  <div className="w-10 h-px bg-wedding-gold"></div>
@@ -52,7 +51,7 @@ const WeddingMassSongs: React.FC = () => {
           ))}
         </div>
 
-        {/* Prayer of the Faithful Special Box */}
+        {/* Optional: You can remove this specific block if 'Prayer of the Faithful' is now included in your WEDDING_SONGS array to avoid duplication */}
         <div className="mt-16 bg-wedding-green/5 p-8 rounded-3xl border border-wedding-green/10 text-center max-w-2xl mx-auto">
           <span className={`${headerFont.className} block text-[11px] tracking-[0.3em] text-wedding-green mb-4 uppercase`}>
             Prayer of the Faithful
